@@ -1,0 +1,8 @@
+{
+  "name": "fin-assistant-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local educational financial analysis assistant; zero npm dependencies",
+  "scripts": {"test": "node --test tests/ui.test.js"}
+}

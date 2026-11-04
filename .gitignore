@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+node_modules/
+local-config.json

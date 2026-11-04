@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>知衡 FinSight · 智能金融分析助手</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="知衡首页"><span class="brand-mark">F<span>↗</span></span><span>知衡 <b>FinSight</b><small>AI 金融分析工作台</small></span></a>
+  <div class="workspace-label">研究空间 <span>LOCAL</span></div>
+  <nav aria-label="分析模块">
+    <button class="nav-item active" data-tab="overview"><span class="nav-icon">◫</span>市场概览<span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-tab="compare"><span class="nav-icon">⇄</span>企业对比</button>
+    <button class="nav-item" data-tab="backtest"><span class="nav-icon">⌁</span>策略实验</button>
+    <button class="nav-item" data-tab="sources"><span class="nav-icon">▤</span>数据与依据</button>
+  </nav>
+  <div class="workspace-label second">样例公司 <span>3</span></div>
+  <div class="company-list">
+    <button data-company="600519"><span class="company-avatar">茅</span><span>贵州茅台<small>600519 · 白酒</small></span><span class="company-dot"></span></button>
+    <button data-company="000858"><span class="company-avatar purple">五</span><span>五粮液<small>000858 · 白酒</small></span></button>
+    <button data-company="600036"><span class="company-avatar gold">招</span><span>招商银行<small>600036 · 银行</small></span></button>
+  </div>
+  <div class="sidebar-bottom"><div class="learning-card"><span>✧</span><strong>从数据出发，理解金融</strong><p>每个结论有依据，<br>每次分析可追溯。</p><button id="guide">查看演示指南 ↗</button></div><div class="local-status"><i></i>本地运行<span>v1.0</span></div></div>
+</aside>
+<div class="shell">
+  <header class="topbar"><div><span class="breadcrumb">研究空间</span><span class="slash">/</span><span id="crumb">市场概览</span></div><div class="top-actions"><span class="course-badge">人工智能 × 金融素养</span><button class="icon-button" id="config-button" aria-label="模型连接设置">⚙</button><span class="user-avatar">研</span></div></header>
+  <div class="page-layout">
+    <main>
+      <section class="page-heading"><div><div class="eyebrow">YOUR FINANCIAL RESEARCH, EXPLAINED.</div><h1 id="page-title">让数据，成为判断的依据。</h1><p id="page-subtitle">观察市场、比较企业，与 AI 一起理解数字背后的含义。</p></div><button id="export" class="secondary small">↥ 导出简报</button></section>
+      <section class="filters" aria-label="查询条件">
+        <label class="symbol-field"><span>研究标的</span><input id="symbol" list="companies" value="600519" aria-label="公司名称或代码" placeholder="公司 / 六位代码"><datalist id="companies"><option value="600519">贵州茅台</option><option value="000858">五粮液</option><option value="600036">招商银行</option></datalist></label>
+        <label><span>开始日期</span><input type="date" id="start" value="2024-01-01"></label><span class="date-divider">—</span><label><span>结束日期</span><input type="date" id="end" value="2024-12-31"></label>
+        <label class="mode-field"><span>数据模式</span><select id="mode"><option value="sample">历史样例</option><option value="online">在线查询</option></select></label><button id="refresh" class="primary">查询 <span>↗</span></button>
+      </section>
+      <div class="data-banner"><span class="banner-dot"></span><span id="mode-note">历史样例 · 真实数据快照，非实时行情 · 覆盖 2023—2025 年</span><button id="source-shortcut">查看来源 →</button></div>
+      <div id="notice" class="notice" role="alert" hidden></div>
+      <div id="work-area" aria-live="polite"><div class="loading-block"><span class="spinner"></span>正在读取本地历史数据…</div></div>
+      <footer class="main-footer"><span>知衡 FinSight · 让金融分析更易理解</span><span>教学分析 · 历史表现不代表未来收益</span></footer>
+    </main>
+    <aside class="assistant-panel" aria-label="AI 分析助手">
+      <div class="assistant-heading"><span class="ai-icon">✧</span><div><strong>AI 分析助手</strong><small>把复杂数据，讲清楚</small></div><span class="model-badge">DeepSeek</span></div>
+      <div class="connection" id="connection"><i></i><span>正在检查模型连接…</span><button id="setup-link">配置</button></div>
+      <div class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome"><div class="welcome-orbit">✧</div><h2>从一个好问题开始</h2><p>我可以结合当前数据，帮助你理解<br>行情、财务指标与策略表现。</p></div>
+        <div class="suggestion-label">试着问我</div>
+        <button class="prompt" data-question="分析当前公司的区间行情，说明数据能支持什么结论，不能说明什么。"><span>↗</span>这段时间的行情说明了什么？</button>
+        <button class="prompt" data-question="比较当前公司与对比公司的盈利能力，列出同一报告期的数据依据。"><span>⇄</span>两家公司的盈利能力有何不同？</button>
+        <button class="prompt" data-question="用默认双均线策略回测当前公司，与买入持有对比，并解释最大回撤。"><span>⌁</span>双均线策略比一直持有更好吗？</button>
+        <div class="assistant-tip"><strong>有依据的回答</strong><p>AI 可查询数据和调用分析工具。展开回答下方的依据，可查看来源与计算结果。</p></div>
+      </div>
+      <div class="composer-wrap"><div class="context-label"><i></i><span id="chat-context">当前研究：贵州茅台 · 历史样例</span></div><form id="chat-form"><label class="sr-only" for="question">向 AI 提问</label><textarea id="question" rows="3" maxlength="2000" placeholder="输入你的问题，例如：净利润增长意味着什么？"></textarea><div class="composer-footer"><span>Enter 发送 · Shift+Enter 换行</span><button type="submit" id="send" aria-label="发送问题">↑</button></div></form><button id="demo" class="demo-link">未连接 AI？生成本地数据摘要 →</button><p class="ai-disclaimer">AI 解读可能出错，请结合数据依据核验。</p></div>
+    </aside>
+  </div>
+</div>
+<dialog id="settings-dialog"><form method="dialog"><button class="dialog-close" aria-label="关闭">×</button></form><div class="eyebrow">LOCAL CONNECTION</div><h2>连接你的 DeepSeek</h2><p>密钥只在本机后台使用，不会发送到网页或保存进项目。</p><ol><li>双击项目文件夹中的 <strong>启动助手.cmd</strong>。</li><li>按提示输入 DeepSeek 密钥，输入内容不会显示。</li><li>在新打开的网页中发送问题即可。</li></ol><div class="code-note">已有环境变量也可以：<br><code>DEEPSEEK_API_KEY</code><br>可选模型配置：<code>DEEPSEEK_MODEL</code></div><p id="model-detail"></p><p class="muted">未配置密钥时，行情、企业对比、回测和本地规则摘要仍然可用。模型调用需要网络，并按你的 DeepSeek 账户计费。</p></dialog>
+<dialog id="guide-dialog"><form method="dialog"><button class="dialog-close" aria-label="关闭">×</button></form><div class="eyebrow">CLASSROOM DEMO</div><h2>五分钟，完成一次研究</h2><ol class="guide-list"><li><strong>观察行情</strong><p>使用历史样例查看贵州茅台 2024 年的价格变化，核对实际交易日期。</p></li><li><strong>比较企业</strong><p>切换企业对比，将茅台与五粮液的同年财务数据放在一起。</p></li><li><strong>做一个实验</strong><p>运行 5 / 20 日双均线回测，对比收益与最大回撤。</p></li><li><strong>向 AI 提问</strong><p>让 DeepSeek 解释结果，展开依据检查引用是否支持结论。</p></li><li><strong>导出记录</strong><p>保存简报，用于报告撰写；分析问题可参考项目中的问答评估表。</p></li></ol></dialog>
+</body></html>
